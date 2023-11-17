@@ -16,7 +16,16 @@ import org.springframework.context.annotation.PropertySource;
 
 /**
  * <p>
- *     配置
+ *     引入配置中心，比如apollo
+ * </p>
+ * <p>
+ *     通常我们的项目配置文件由如下三部分构成：
+ *
+ *     <ul>
+ *         <li>application.properties: 项目基础配置</li>
+ *         <li>environment.properties: 环境配置，比如数据库、redis、consul等中间件配置</li>
+ *         <li>customized.properties: 自定义配置，比如自己些的@Value属性信息</li>
+ *     </ul>
  * </p>
  *
  * @author Jiang Wanyu
@@ -26,7 +35,8 @@ import org.springframework.context.annotation.PropertySource;
 @EnableApolloConfig
 @PropertySource(
         value = {
-                "common.properties"
+                "environment.properties",
+                "customized.properties"
         },
         ignoreResourceNotFound = true
 )
